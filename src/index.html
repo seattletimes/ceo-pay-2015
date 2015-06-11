@@ -5,14 +5,56 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <%= t.include("partials/_adHead.html") %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   </head>
-  <body>
 
-    <responsive-child>
-      <!-- content goes here -->
-    </responsive-child>
+  <body ng-app="ceos">
 
+    <div ng-controller="CEOPayController">
+      <div class = "filters">
+        <label class = "filter-class">Total CEOs matching filter:{{ceoData.length}}</label>
+        <select ng-model="filterBy">
+          <option value="all">All</option>
+          <option value="men">Men</option>
+          <option value="women">Women</option>
+          <option value="under40">Under 40</option>
+          <option value="over40">40+</option>
+        </select>
+      </div>
+
+      <div class="button" ng-click="filterBy = 'all'">All</div>
+      <div class="button" ng-click="filterBy = 'men'">Men</div>
+      <div class="button" ng-click="filterBy = 'women'">Women</div>
+      <div class="button" ng-click="filterBy = 'under40'">Under 40</div>
+      <div class="button" ng-click="filterBy = 'over40'">40+</div>
+
+      <table border=1>
+        <thead sticky>
+          <tr>
+          <th ng-repeat="header in headers", bgcolor="gray">
+            <!-- , ng-click="sortTable(header)" -->
+              <!-- class="{{header.short}}" ng-class="{left: header.short == 'company', -->
+              <!-- up: lastSort == header && sortOrder == -1, down: lastSort == header -->
+              <!-- && sortOrder == 1}"> -->
+              <div class="header">{{header.title}}</div>
+            </th>
+          </tr>
+        </thead>
+          <tr ng-repeat="ceo in ceoData | filter:ceoFilter">
+            <td> {{ceo.name}}
+            <td> {{ceo.company}}
+            <td> {{ceo.age}}
+            <td> ${{ceo.total | number}}
+            <td> {{ceo.percentCash}}
+            <td> {{ceo.percentEquity}}
+            <td> {{ceo.percentOther}}
+          </tr>
+        </table>
+    </div>
+
+    <script>
+      var ceoData = <%= JSON.stringify(csv.ceo_pay_2015_v3) %>;
+    </script>
     <script src="app.js"></script>
     <% if (json.project.production) { %>
     <%= !json.project.embedded ? t.include("partials/_adFoot.html") : "" %>
