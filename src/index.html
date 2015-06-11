@@ -11,17 +11,8 @@
   <body ng-app="ceos">
 
     <div ng-controller="CEOPayController">
-      <div class = "filters">
-        <label class = "filter-class">Total CEOs matching filter:{{ceoData.length}}</label>
-        <select ng-model="filterBy">
-          <option value="all">All</option>
-          <option value="men">Men</option>
-          <option value="women">Women</option>
-          <option value="under40">Under 40</option>
-          <option value="over40">40+</option>
-        </select>
-      </div>
 
+      <label>Total CEOs matching filter:{{(ceoData|filter:ceoFilter).length}}</label>
       <div class="button" ng-click="filterBy = 'all'">All</div>
       <div class="button" ng-click="filterBy = 'men'">Men</div>
       <div class="button" ng-click="filterBy = 'women'">Women</div>
@@ -29,14 +20,10 @@
       <div class="button" ng-click="filterBy = 'over40'">40+</div>
 
       <table border=1>
-        <thead sticky>
+        <thead class="header">
           <tr>
-          <th ng-repeat="header in headers", bgcolor="gray">
-            <!-- , ng-click="sortTable(header)" -->
-              <!-- class="{{header.short}}" ng-class="{left: header.short == 'company', -->
-              <!-- up: lastSort == header && sortOrder == -1, down: lastSort == header -->
-              <!-- && sortOrder == 1}"> -->
-              <div class="header">{{header.title}}</div>
+          <th ng-repeat="header in headers" ng-click="sortTable(header)" ng-class="{left: header.short == 'company', up: lastSort == header && sortOrder == -1, down: lastSort == header && sortOrder == 1}">
+              <div>{{header.title}}</div>
             </th>
           </tr>
         </thead>
@@ -45,9 +32,16 @@
             <td> {{ceo.company}}
             <td> {{ceo.age}}
             <td> ${{ceo.total | number}}
-            <td> {{ceo.percentCash}}
-            <td> {{ceo.percentEquity}}
-            <td> {{ceo.percentOther}}
+            <td class="outer-bar">
+              <div class="cash pay-bar" style="width: {{ceo.percentCash}}%">
+                <div class="tooltip">Cash = {{ceo.percentCash}}%</div>
+              </div>
+              <span title="Equity = {{ceo.percentEquity}}%">
+                <div class="equity pay-bar" style="width: {{ceo.percentEquity}}%"></div>
+              </span>
+              <span title="Other = {{ceo.percentOther}}%">
+                <div class="other pay-bar" style="width: {{ceo.percentOther}}%"></div>
+              </span>
           </tr>
         </table>
     </div>

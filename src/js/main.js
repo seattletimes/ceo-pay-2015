@@ -6,26 +6,10 @@ require("angular");
 
 var app = angular.module("ceos", []);
 
-console.log(ceoData)
-
-// app.filter("illions", ["$filter", function($filter){
-//   var format = $filter("number");
-//   return function(number) {
-//     var display;
-//     if (number > 999) {
-//       display = format(number/1000, 1) + " B";
-//     } else {
-//       display = number + " M";
-//     }
-//     display = "$" + display;
-//     return display.replace(/\$\-/, "-$");
-//   }
-
-// }]);
-
-console.log(ceoData)
-
 ceoData.forEach(function(row) {
+  // var percentCash = Math.round(row.cash/row.total*100);
+  // var percentEquity = Math.round(row.equity/row.total*100);
+  // var percentOther = Math.round(row.other/row.total*100);
   var percentCash = Math.round(row.cash/row.total*10000)/100;
   var percentEquity = Math.round(row.equity/row.total*10000)/100;
   var percentOther = Math.round(row.other/row.total*10000)/100;
@@ -34,7 +18,10 @@ ceoData.forEach(function(row) {
   row.percentOther = percentOther;
 });
 
-console.log(ceoData)
+ceoData.forEach(function(row) {
+  var lastname = row.name.split(' ').slice(-1).join(' ');
+  row.lastname = lastname;
+});
 
 app.controller("CEOPayController", ["$scope", function($scope) {
   $scope.ceoData = ceoData;
@@ -52,16 +39,47 @@ app.controller("CEOPayController", ["$scope", function($scope) {
     } else if ($scope.filterBy == "women"){
       return value.gender == "F";
     }
-  }
+  };
 
   $scope.headers = [
-  { title: "Name", short: "ceoname" },
-  { title: "Company", short: "company" },
-  { title: "Age", short: "age" },
-  { title: "Total Salary", short: "salary" },
-  { title: "Cash Percent", short: "cash" },
-  { title: "Equity Percent", short: "equity" },
-  { title: "Other Percent", short: "other" },
+    { title: "Name", short: "lastname" },
+    { title: "Company", short: "company" },
+    { title: "Age", short: "age" },
+    { title: "Total Salary", short: "total" },
+    { title: "Salary break-down", short: "salary_percents" },
   ];
+
+  $scope.lastSort = $scope.headers[1];
+  $scope.sortOrder = 1;
+
+  $scope.sortTable = function(header) {
+    if ($scope.lastSort == header) {
+      $scope.sortOrder *= -1;
+    } else {
+      $scope.lastSort = header;
+      $scope.sortOrder = 1;
+    }
+
+    $scope.ceoData.sort(function(a, b) {
+      if (typeof a[header.short] == "number") {
+        a = a[header.short];
+      } else {
+        a = a[header.short].toLowerCase();
+      }
+      if (typeof b[header.short] == "number") {
+        b = b[header.short];
+      } else {
+        b = b[header.short].toLowerCase();
+      }
+
+      if (a < b) {
+        return -1 * $scope.sortOrder;
+      } else if (a > b) {
+        return 1 * $scope.sortOrder;
+      } else if (a == b) {
+        return 0;
+      }
+    });
+  };
 
   }]);
