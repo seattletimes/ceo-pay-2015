@@ -55,14 +55,14 @@ table {
       width: 34px;
     }
 
-    @media @mobile{
+    @media @mobile and (orientation: portrait){
       display: none;
     }
   }
 
   .age {
     width: 70px;
-    @media @mobile {
+    @media @mobile and (orientation: portrait) {
       display: none;
     }
   }
@@ -85,7 +85,6 @@ table {
   &:hover {
     cursor: pointer;
   }
-
 }
 
 .button {
@@ -104,6 +103,11 @@ table {
     background-color: @st-dark-green;
     font-weight: bold;
   }
+
+  @media @mobile and (orientation: landscape){
+    padding: 5px 5px;
+  }
+
 
 }
 
