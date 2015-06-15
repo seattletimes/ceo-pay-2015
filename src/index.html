@@ -47,12 +47,12 @@
             <td class="pay outer-bar"> ${{ceo.total | number}} <p>
             <!-- <td class="outer-bar"> -->
             <div class="bar-container">
-              <div class="salary pay-bar" style="width: {{ceo.percentSalary}}%"> </div>
-              <div class="bonus pay-bar" style="width: {{ceo.percentBonus}}%"> </div>
-              <div class="neip pay-bar" style="width: {{ceo.percentNEIP}}%"> </div>
-              <!-- <div class="cash pay-bar" style="width: {{ceo.percentCash}}%"> </div> -->
-              <div class="equity pay-bar" style="width: {{ceo.percentEquity}}%"> </div>
-              <div class="other pay-bar" style="width: {{ceo.percentOther}}%"> </div>
+              <div class="salary pay-bar" ng-style="{ width: ceo.percentSalary + '%' }"> </div>
+              <div class="bonus pay-bar" ng-style="{ width: ceo.percentBonus + '%' }"> </div>
+              <div class="neip pay-bar" ng-style="{ width: ceo.percentNEIP + '%' }"> </div>
+              <!-- <div class="cash pay-bar" style="width: ceo.percentCash + '%'"> </div> -->
+              <div class="equity pay-bar" ng-style="{ width: ceo.percentEquity + '%' }"> </div>
+              <div class="other pay-bar" ng-style="{ width: ceo.percentOther + '%' }"> </div>
               <ul class="tooltip">
                 <!-- <li> Cash: <b>{{ceo.percentCash}}%</b> -->
                 <li> Salary: <b>{{ceo.percentSalary}}%</b>
