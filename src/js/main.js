@@ -10,9 +10,13 @@ ceoData.forEach(function(row) {
   // var percentCash = Math.round(row.cash/row.total*100);
   // var percentEquity = Math.round(row.equity/row.total*100);
   // var percentOther = Math.round(row.other/row.total*100);
+  var percentBonus = Math.round(row.bonus/row.total*10000)/100;
+  var percentSalary = Math.round(row.salary/row.total*10000)/100;
   var percentCash = Math.round(row.cash/row.total*10000)/100;
   var percentEquity = Math.round(row.equity/row.total*10000)/100;
   var percentOther = Math.round(row.other/row.total*10000)/100;
+  row.percentBonus = percentBonus;
+  row.percentSalary = percentSalary;
   row.percentCash = percentCash;
   row.percentEquity = percentEquity;
   row.percentOther = percentOther;
@@ -20,37 +24,36 @@ ceoData.forEach(function(row) {
 
 ceoData.forEach(function(row) {
   var lastname = row.name.split(' ').slice(-1).join(' ');
+  var firstname = row.name.split(' ').slice(0,-1).join(' ');
   row.lastname = lastname;
+  row.firstname = firstname;
 });
 
-app.controller("CEOPayController", ["$scope", function($scope) {
+app.controller("CEOPayController", ["$scope", "$filter", function($scope, $filter) {
   $scope.ceoData = ceoData;
   $scope.filterBy = "all";
 
-  $scope.ceoFilter = function(value) {
-    if ($scope.filterBy == "all") {
-      return true;
-    } else if ($scope.filterBy == "under40") {
-      return value.age < 40;
-    } else if ($scope.filterBy == "over40"){
-      return value.age >= 40;
-    } else if ($scope.filterBy == "men"){
-      return value.gender == "M";
-    } else if ($scope.filterBy == "women"){
-      return value.gender == "F";
-    }
-  };
+  var ceoFilter = $filter("ceoFilter");
+
+  var count = by => ceoFilter(ceoData, by).length;
+
+  $scope.counts = {
+    all: ceoData.length,
+    under40: count("under40"),
+    over40: count("over40"),
+    men: count("men"),
+    women: count("women")
+  }
 
   $scope.headers = [
     { title: "Name", short: "lastname" },
-    { title: "Company", short: "company" },
     { title: "Age", short: "age" },
-    { title: "Total Salary", short: "total" },
-    { title: "Salary break-down", short: "salary_percents" },
+    { title: "Company", short: "company" },
+    { title: "Total Salary", short: "total" }
   ];
 
-  $scope.lastSort = $scope.headers[1];
-  $scope.sortOrder = 1;
+  $scope.lastSort = $scope.headers[3];
+  $scope.sortOrder = -1;
 
   $scope.sortTable = function(header) {
     if ($scope.lastSort == header) {
@@ -83,3 +86,35 @@ app.controller("CEOPayController", ["$scope", function($scope) {
   };
 
   }]);
+
+  app.filter("ceoFilter", function() {
+    return function(input, by) {
+      return input.filter(function(value) {
+        if (by == "all") {
+          return true;
+        } else if (by == "under40") {
+          return value.age < 40;
+        } else if (by == "over40"){
+          return value.age >= 40;
+        } else if (by == "men"){
+          return value.gender == "M";
+        } else if (by == "women"){
+          return value.gender == "F";
+        }
+      });
+    }
+  });
+
+  // app.directive("upgradeSrc", function() {
+  //   return {
+  //     restrict: "A",
+  //     link: function(scope, element, attrs) {
+  //       var src = attrs.upgradeSrc;
+  //       var img = new Image();
+  //       img.src = src;
+  //       img.onload = function() {
+  //         element.attr("src", src);
+  //       };
+  //     }
+  //   }
+  // })

@@ -12,36 +12,44 @@
 
     <div ng-controller="CEOPayController">
 
-      <label>Total CEOs matching filter:{{(ceoData|filter:ceoFilter).length}}</label>
-      <div class="button" ng-click="filterBy = 'all'">All</div>
-      <div class="button" ng-click="filterBy = 'men'">Men</div>
-      <div class="button" ng-click="filterBy = 'women'">Women</div>
-      <div class="button" ng-click="filterBy = 'under40'">Under 40</div>
-      <div class="button" ng-click="filterBy = 'over40'">40+</div>
+      <!-- <label>Total CEOs matching filter:{{(ceoData|filter:ceoFilter).length}}</label> -->
+      <div class="button" ng-click="filterBy = 'all'">All ({{counts.all}})</div>
+      <div class="button" ng-click="filterBy = 'men'">Men ({{counts.men}})</div>
+      <div class="button" ng-click="filterBy = 'women'">Women ({{counts.women}})</div>
+      <div class="button" ng-click="filterBy = 'under40'">Under 40 ({{counts.under40}})</div>
+      <div class="button" ng-click="filterBy = 'over40'">40+ ({{counts.over40}})</div>
 
       <table border=1>
         <thead class="header">
           <tr>
-          <th ng-repeat="header in headers" ng-click="sortTable(header)" ng-class="{left: header.short == 'company', up: lastSort == header && sortOrder == -1, down: lastSort == header && sortOrder == 1}">
-              <div>{{header.title}}</div>
+          <th></th>
+          <th ng-repeat="header in headers" ng-click="sortTable(header)" ng-class="{left: header.short == 'company', down: lastSort == header && sortOrder == -1, up: lastSort == header && sortOrder == 1}">
+              {{header.title}}
             </th>
           </tr>
         </thead>
-          <tr ng-repeat="ceo in ceoData | filter:ceoFilter">
-            <td> {{ceo.name}}
-            <td> {{ceo.company}}
+          <tr ng-repeat="ceo in ceoData | ceoFilter:filterBy">
+            <td class=ceo_image>
+              <img class="mug" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img>
+            <td class=ceo_name_class> {{ceo.name}}
             <td> {{ceo.age}}
-            <td> ${{ceo.total | number}}
-            <td class="outer-bar">
-              <div class="cash pay-bar" style="width: {{ceo.percentCash}}%">
-                <div class="tooltip">Cash = {{ceo.percentCash}}%</div>
-              </div>
-              <span title="Equity = {{ceo.percentEquity}}%">
-                <div class="equity pay-bar" style="width: {{ceo.percentEquity}}%"></div>
-              </span>
-              <span title="Other = {{ceo.percentOther}}%">
-                <div class="other pay-bar" style="width: {{ceo.percentOther}}%"></div>
-              </span>
+            <td> {{ceo.company}}
+            <td class="outer-bar"> ${{ceo.total | number}} <p>
+            <!-- <td class="outer-bar"> -->
+            <div class="bar-container">
+              <div class="salary pay-bar" style="width: {{ceo.percentSalary}}%"> </div>
+              <div class="bonus pay-bar" style="width: {{ceo.percentBonus}}%"> </div>
+              <!-- <div class="cash pay-bar" style="width: {{ceo.percentCash}}%"> </div> -->
+              <div class="equity pay-bar" style="width: {{ceo.percentEquity}}%"> </div>
+              <div class="other pay-bar" style="width: {{ceo.percentOther}}%"> </div>
+              <ul class="tooltip">
+                <!-- <li> Cash: <b>{{ceo.percentCash}}%</b> -->
+                <li> Salary: <b>{{ceo.percentSalary}}%</b>
+                <li ng-if="ceo.percentBonus"> Bonus: <b>{{ceo.percentBonus}}%</b>
+                <li ng-if="ceo.percentEquity"> Equity: <b>{{ceo.percentEquity}}%</b>
+                <li ng-if="ceo.percentOther"> Other: <b>{{ceo.percentOther}}%</b>
+              </ul>
+            </div>
           </tr>
         </table>
     </div>
