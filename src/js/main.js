@@ -12,11 +12,13 @@ ceoData.forEach(function(row) {
   // var percentOther = Math.round(row.other/row.total*100);
   var percentBonus = Math.round(row.bonus/row.total*10000)/100;
   var percentSalary = Math.round(row.salary/row.total*10000)/100;
+  var percentNEIP = Math.round(row.neip/row.total*10000)/100;
   var percentCash = Math.round(row.cash/row.total*10000)/100;
   var percentEquity = Math.round(row.equity/row.total*10000)/100;
   var percentOther = Math.round(row.other/row.total*10000)/100;
   row.percentBonus = percentBonus;
   row.percentSalary = percentSalary;
+  row.percentNEIP = percentNEIP;
   row.percentCash = percentCash;
   row.percentEquity = percentEquity;
   row.percentOther = percentOther;
@@ -30,11 +32,12 @@ ceoData.forEach(function(row) {
 });
 
 app.controller("CEOPayController", ["$scope", "$filter", function($scope, $filter) {
-  $scope.ceoData = ceoData;
-  $scope.filterBy = "all";
+  var ceoDataShort = $scope.ceoDataShort =  ceoData.slice(0,10);
+  var ceoDataLong = $scope.ceoDataLong =  ceoData;
+  $scope.ceoData = ceoDataShort;
+  $scope.filterBy = "short";
 
   var ceoFilter = $filter("ceoFilter");
-
   var count = by => ceoFilter(ceoData, by).length;
 
   $scope.counts = {
@@ -46,14 +49,18 @@ app.controller("CEOPayController", ["$scope", "$filter", function($scope, $filte
   }
 
   $scope.headers = [
-    { title: "Name", short: "lastname" },
-    { title: "Age", short: "age" },
-    { title: "Company", short: "company" },
-    { title: "Total Salary", short: "total" }
+    { title: "Name", short: "lastname", className: "name" },
+    { title: "Age", short: "age", className: "age" },
+    { title: "Company", short: "company", className: "company" },
+    { title: "Total Salary", short: "total", className: "pay" }
   ];
 
   $scope.lastSort = $scope.headers[3];
   $scope.sortOrder = -1;
+
+  $scope.switchData = function(useLong) {
+    $scope.ceoData = useLong ? ceoDataLong : ceoDataShort;
+  }
 
   $scope.sortTable = function(header) {
     if ($scope.lastSort == header) {
@@ -90,7 +97,9 @@ app.controller("CEOPayController", ["$scope", "$filter", function($scope, $filte
   app.filter("ceoFilter", function() {
     return function(input, by) {
       return input.filter(function(value) {
-        if (by == "all") {
+        if (by == "short") {
+          return true;
+        } else if (by == "all") {
           return true;
         } else if (by == "under40") {
           return value.age < 40;

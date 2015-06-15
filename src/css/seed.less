@@ -10,6 +10,7 @@
 body {
   font-family: @df-sans;
   font-size: 14px;
+  max-width: 620px;
 
   @media @tablet {
     font-size: 12px;
@@ -24,6 +25,7 @@ table {
   margin-top: 20px;
   line-height: 1.5;
   border-collapse: collapse;
+  width: 100%;
 
   // tr {
   //   border-top: 2px solid @df-dark-gray;
@@ -40,12 +42,35 @@ table {
     padding: 8px 8px;
     border: none;
     line-height: 16px;
-    max-width: 150px;
+    // max-width: 150px;
+    // @media @mobile{
+      // max-width: 120px;
+    // }
   }
 
-  th {
-    // border-bottom: 4px solid @df-dark-gray;
+  .image {
+    width: 55px;
+
+    img {
+      width: 34px;
+    }
+
+    @media @mobile{
+      display: none;
+    }
   }
+
+  .age {
+    width: 70px;
+    @media @mobile {
+      display: none;
+    }
+  }
+
+  .company, .name{
+    width: 175px;
+  }
+
 }
 
 .header {
@@ -60,16 +85,24 @@ table {
   &:hover {
     cursor: pointer;
   }
+
 }
 
 .button {
   display: inline-block;
+  margin: 3px 3px;
   border: 1px @df-light-gray;
   background-color: @st-light-green;
-  padding: 4px 10px;
+  padding: 5px 10px;
 
   &:hover {
     cursor: pointer;
+    background-color: @st-dark-green;
+  }
+
+  &.active {
+    background-color: @st-dark-green;
+    font-weight: bold;
   }
 
 }
@@ -109,6 +142,9 @@ table {
   &.bonus {
     background: red;
   }
+  &.neip {
+    background: purple;
+  }
   &.equity {
     background: #A9CE56;
   }
@@ -138,7 +174,6 @@ table {
     padding: 5px;
     top: calc(~"100% + 5px");
     right: 0;
-    // width: 200px;
     display: none;
     z-index: 999;
     font-size: 11;
@@ -156,28 +191,42 @@ table {
 
 }
 
-// .ceo_name_class{
-//   font-weight: bold;
-// }
-
 .mug {
   height: 50px;
   position: relative;
-  transform-origin: left top 0px;
-  z-index: 999;
-  transition: transform 0.5s ease-in-out 0s;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  border-color: white;
+  border-style: solid;
+  border-width: 0px;
 
   &:hover {
-    height: 100px;
+    @scale: 3;
+    //height: 100px;
     // cursor: pointer;
+    -webkit-transform: scale(@scale);
+    transform: scale(@scale);
+    z-index: 999;
+    border-width: 2px;
+    cursor: pointer;
   }
-  // margin-bottom: 0px;
-  // margin-top: 0px;
-  // margin-right: 0px;
-  // margin-left: 0px;
-  // text-align: center;
+
 }
 
 label {
   font-size: 20;
+}
+
+.source{
+  font-style: italic;
+  padding-top: 10px;
+}
+.credit{
+  text-transform: uppercase;
+}
+
+.source,
+.credit {
+  font-size: 11.5px;
+  color: #7e838b;
 }
