@@ -39,8 +39,9 @@
           </tr>
         </thead>
           <tr ng-repeat="ceo in ceoData | ceoFilter:filterBy">
-            <td class=image>
-              <img class="mug" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img>
+            <td class="image">
+              <img ng-class="{ mug: ceo.mug, anon: !ceo.mug }" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img>
+              <!-- <img class="mug" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img> -->
             <td class=name> {{ceo.name}}
             <td class=age> {{ceo.age}}
             <td class=company> {{ceo.company}}
