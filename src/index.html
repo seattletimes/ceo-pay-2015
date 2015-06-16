@@ -56,11 +56,12 @@
               <div class="other pay-bar" ng-style="{ width: ceo.percentOther + '%' }"> </div>
               <ul class="tooltip">
                 <!-- <li> Cash: <b>{{ceo.percentCash}}%</b> -->
-                <li> Salary: <b>{{ceo.percentSalary}}%</b>
-                <li ng-if="ceo.percentBonus"> Bonus: <b>{{ceo.percentBonus}}%</b>
-                <li ng-if="ceo.percentNEIP"> NEIP Payout: <b>{{ceo.percentNEIP}}%</b>
-                <li ng-if="ceo.percentEquity"> Equity: <b>{{ceo.percentEquity}}%</b>
-                <li ng-if="ceo.percentOther"> Other: <b>{{ceo.percentOther}}%</b>
+                <li><div class="salary color-box"></div> Salary: <b>{{ceo.percentSalary}}%</b></li>
+                <li ng-if="ceo.percentBonus"><div class="bonus color-box"></div> Bonus: <b>{{ceo.percentBonus}}%</b></li>
+                  <!-- <div class="color-box" ng-style="{ width: 20px }"></div> -->
+                <li ng-if="ceo.percentNEIP"><div class="neip color-box"></div> NEIP Payout: <b>{{ceo.percentNEIP}}%</b></li>
+                <li ng-if="ceo.percentEquity"><div class="equity color-box"></div> Equity: <b>{{ceo.percentEquity}}%</b></li>
+                <li ng-if="ceo.percentOther"><div class="other color-box"></div> Other: <b>{{ceo.percentOther}}%</b></li>
               </ul>
             </div>
           </tr>

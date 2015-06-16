@@ -27,10 +27,6 @@ table {
   border-collapse: collapse;
   width: 100%;
 
-  // tr {
-  //   border-top: 2px solid @df-dark-gray;
-  // }
-
   thead tr {
     border: none;
   }
@@ -42,10 +38,6 @@ table {
     padding: 8px 8px;
     border: none;
     line-height: 16px;
-    // max-width: 150px;
-    // @media @mobile{
-      // max-width: 120px;
-    // }
   }
 
   .image {
@@ -74,13 +66,12 @@ table {
 }
 
 .header {
-  //color: white;
-  //background: gray;
   color: @df-dark-gray;
+  font-weight: normal;
+  font-size: 13px;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: left;
-  // border: 1px @df-light-gray;
   border-bottom: 4px solid @df-dark-gray;
   &:hover {
     cursor: pointer;
@@ -91,16 +82,18 @@ table {
   display: inline-block;
   margin: 3px 3px;
   border: 1px @df-light-gray;
-  background-color: @st-light-green;
+  background-color: @df-light-gray;
   padding: 5px 10px;
 
   &:hover {
     cursor: pointer;
-    background-color: @st-dark-green;
+    background-color: @df-dark-gray;
+    color: white;
   }
 
   &.active {
-    background-color: @st-dark-green;
+    background-color: @df-dark-gray;
+    color: white;
     font-weight: bold;
   }
 
@@ -141,19 +134,19 @@ table {
   float: left;
 
   &.salary {
-    background: #34401B;
+    background: black;
   }
   &.bonus {
-    background: red;
+    background: #34401B;
   }
   &.neip {
-    background: purple;
-  }
-  &.equity {
     background: #A9CE56;
   }
-  &.other {
+  &.equity {
     background: #58903F;
+  }
+  &.other {
+    background: purple;
   }
 
   &:hover {
@@ -162,6 +155,8 @@ table {
 }
 
 .bar-container {
+
+  font-family: @df-serif;
 
   &::after {
     content: " ";
@@ -174,6 +169,7 @@ table {
     position: absolute;
     background: white;
     border: 1px solid @df-light-gray;
+    line-height: 120%;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, .2);
     padding: 5px;
     top: calc(~"100% + 5px");
@@ -182,11 +178,39 @@ table {
     z-index: 999;
     font-size: 11;
     list-style-type: none;
-    margin: 0;
+    margin: 10;
+
+    &.color_bar {
+      background: #A9CE56;
+    }
+
+    .color-box {
+      list-style: none;
+      padding: 4px;
+      width: 8px;
+      // height: 4px;
+      display: inline-block;
+      &.salary {
+        background: black;
+      }
+      &.bonus {
+        background: #34401B;
+      }
+      &.neip {
+        background: #A9CE56;
+      }
+      &.equity {
+        background: #58903F;
+      }
+      &.other {
+        background: purple;
+      }
+    }
 
     li {
       white-space: nowrap;
     }
+
   }
 
   &:hover .tooltip {
