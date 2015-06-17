@@ -18,7 +18,7 @@ Costco Wholesale,COST,18-Sep,Craig Jelinek,JelinekCraig,President & CEO,740400,4
 Boise Cascade,BCC,19-Jan,Thomas Carlile,CarlileThomas,CEO,2450000,1030516,1888558,5369074,#REF!,850000,0,1600000,"$1,030,516 ", $-   ,"$1,888,558 ",63,M,17
 Greenbrier Cos. ,GBX,18-Sep,William Furman,FurmanWilliam,"Chairman, president & CEO",2736800,2078968,484695,5300463,#REF!,829333,0,1907467,"$2,078,968 ", $-   ,"$484,695 ",70,M,18
 Mentor Graphics,MENT,18-Feb,Walden Rhines,RhinesWalden,Chairman & CEO,1687400,3499958,7713,5195071,#REF!,737500,0,949900,"$3,499,958 ", $-   ,"$7,713 ",67,M,19
-Expeditors International ,EXPD,19-Jan,Jeffrey Musser,,President & CEO,3581338,1497198,1500,5080036,n/a,100000,0,3481338, $-   ,"$1,497,198 ","$1,500 ",49,M,20
+Expeditors International ,EXPD,19-Jan,Jeffrey Musser,MusserJeff,President & CEO,3581338,1497198,1500,5080036,n/a,100000,0,3481338, $-   ,"$1,497,198 ","$1,500 ",49,M,20
 StanCorp Financial Group,SFG,19-Jan,Greg Ness,NessGreg,"Chairman, president & CEO",2593846,2383016,71310,5048172,#REF!,944231,413101,1236514,"$1,707,530 ","$675,486 ","$71,310 ",57,M,21
 Symetra Financial,SYA,19-Jan,Thomas Marra,MarraThomas,President & CEO,3194691,1499980,97415,4792086,#REF!,525000,0,2669691,"$1,499,980 ", $-   ,"$97,415 ",56,M,22
 Clearwater Paper,CLW,19-Jan,Linda Massman,MassmanLinda,President & CEO,1399200,3011239,136106,4546545,#REF!,762500,0,636700,"$1,817,989 ","$1,193,250 ","$136,106 ",48,F,23
@@ -29,7 +29,7 @@ Lattice Semiconductor,LSCC,19-Jan,Darin Billerbeck,,President & CEO,1151089,2778
 Itron,ITRI,19-Jan,Philip Mezey,MezeyPhilip,President & CEO,1507869,2310714,24000,3842583,#REF!,800000,0,707869,"$1,510,723 ","$799,991 ","$24,000 ",55,M,28
 Avista,AVA,19-Jan,Scott Morris,MorrisScott,"Chairman, president & CEO",2059262,1540351,238340,3837953,#REF!,747114,191506,1120642,"$1,540,351 ", $-   ,"$238,340 ",57,M,29
 Nordstrom,JWN,19-Feb,Blake Nordstrom,NordstromBlake,President,1920976,1812633,55630,3789239,#REF!,722986,0,1197990,"$906,152 ","$906,481 ","$55,630 ",54,M,30
-Paccar,PCAR,19-Jan,Ronald Armstrong,,CEO,2612185,1131224,13000,3756409,n/a,972115,0,1640070,"$678,214 ","$453,010 ","$13,000 ",60,M,31
+Paccar,PCAR,19-Jan,Ronald Armstrong,ArmstrongRon,CEO,2612185,1131224,13000,3756409,n/a,972115,0,1640070,"$678,214 ","$453,010 ","$13,000 ",60,M,31
 Umpqua Holdings,UMPQ,19-Jan,Raymond Davis,DavisRay,President & CEO,1860625,1702301,55760,3618686,#REF!,910625,0,950000,"$1,702,301 ", $-   ,"$55,760 ",65,M,32
 FEI,FEIC,19-Jan,Don Kania,KaniaDon,President & CEO,1114120,2347359,0,3461479,#REF!,698070,0,416050,"$1,259,642 ","$1,087,717 ", $-   ,60,M,33
 Washington Federal,WAFD,18-Oct,Roy Whitehead,WhiteheadRoy,"Chairman, president & CEO",1584719,1743000,87105,3414824,#REF!,750000,0,834719,"$1,743,000 ", $-   ,"$87,105 ",62,M,34
@@ -104,7 +104,7 @@ Timberland Bancorp,TSBK,18-Oct,Michael Sand,SandMichael,President & CEO,288717,5
 Onvia,ONVI,19-Jan,Henry Riner,RinerHenry,President & CEO,350000,0,1560,351560,#REF!,350000,0,0, $-   , $-   ,"$1,560 ",64,M,103
 ClearSign Combustion,CLIR,19-Jan,James Harmon,,Interim president & CEO,291330,20062,19013,330405,n/a,200000,91330,0, $-   ,"$20,062 ","$19,013 ",55,M,104
 Anchor Bancorp,ANCB,18-Jul,Jerald Shaw,ShawJerald,President & CEO,260000,0,64448,324448,#REF!,260000,0,0, $-   , $-   ,"$64,448 ",68,M,105
-Zulily,ZU,19-Jan,Darrell Cavens,,President & CEO,324349,0,0,324349,#REF!,249349,75000,0, $-   , $-   , $-   ,42,M,106
+Zulily,ZU,19-Jan,Darrell Cavens,CavensDarrell,President & CEO,324349,0,0,324349,#REF!,249349,75000,0, $-   , $-   , $-   ,42,M,106
 Timberline Resources,TLR,18-Oct,Paul Dircksen,,President & CEO,220500,0,68434,288934,#REF!,220500,0,0, $-   , $-   ,"$68,434 ",69,M,107
 Riverview Bancorp,RVSB,18-Apr,Patrick Sheaffer,SheafferPatrick,Chairman & CEO,237110,7080,35885,280075,#REF!,237110,0,0, $-   ,"$7,080 ","$35,885 ",74,M,108
 Electro Scientific Industries,ESIO,18-Apr,Edward Grady,GradyEd,President & CEO,60512,187881,0,248393,n/a,60512,0,0, $-   ,"$187,881 ", $-   ,67,M,109

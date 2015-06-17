@@ -6,69 +6,78 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <style>
+[ng-cloak] {
+  display: none;
+}
+    </style>
   </head>
 
   <body ng-app="ceos">
 
-    <div ng-controller="CEOPayController">
+    <responsive-child>
 
-      <!-- <label>Total CEOs matching filter:{{(ceoData|filter:ceoFilter).length}}</label> -->
-      <!-- <div class="button" ng-click="filterBy = 'short'" ng-class={active:filterBy=='short'}>Featured CEOs</div> -->
-      <div class="button" ng-click="filterBy = 'short'; ceoData = ceoDataShort" ng-class="{active:filterBy=='short'}">Top paid CEOs</div>
-      <div class="button" ng-click="filterBy = 'all'; ceoData = ceoDataLong" ng-class="{active:filterBy=='all'}">All ({{counts.all}})</div>
-      <div class="button" ng-click="filterBy = 'men'; ceoData = ceoDataLong" ng-class="{active:filterBy=='men'}">Men ({{counts.men}})</div>
-      <div class="button" ng-click="filterBy = 'women'; ceoData = ceoDataLong" ng-class="{active:filterBy=='women'}">Women ({{counts.women}})</div>
-      <div class="button" ng-click="filterBy = 'under40'; ceoData = ceoDataLong" ng-class="{active:filterBy=='under40'}">Under 40 ({{counts.under40}})</div>
-      <div class="button" ng-click="filterBy = 'over40'; ceoData = ceoDataLong" ng-class="{active:filterBy=='over40'}">40+ ({{counts.over40}})</div>
+      <div ng-controller="CEOPayController" ng-cloak>
 
-      <table border=1>
-        <thead class="header">
-          <tr>
-          <th class="rank">#</th>
-          <th class="image"></th>
-          <th
-            class="{{header.className}}"
-            ng-repeat="header in headers"
-            ng-click="sortTable(header)"
-            ng-class="{
-              left: header.short == 'company',
-              down: lastSort == header && sortOrder == -1,
-              up: lastSort == header && sortOrder == 1
-            }">
-              {{header.title}}
-            </th>
-          </tr>
-        </thead>
-          <tr ng-repeat="ceo in ceoData | ceoFilter:filterBy">
-            <td class="rank">{{ceo.rank}}
-            <td class="image">
-              <img ng-class="{ mug: ceo.mug, anon: !ceo.mug }" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img>
-              <!-- <img class="mug" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img> -->
-            <td class=name> {{ceo.name}}
-            <td class=age> {{ceo.age}}
-            <td class=company> {{ceo.company}}
-            <td class="pay outer-bar"> ${{ceo.total | number}} <p>
-            <!-- <td class="outer-bar"> -->
-            <div class="bar-container">
-              <div class="salary pay-bar" ng-style="{ width: ceo.percentSalary + '%' }"> </div>
-              <div class="bonus pay-bar" ng-style="{ width: ceo.percentBonus + '%' }"> </div>
-              <div class="neip pay-bar" ng-style="{ width: ceo.percentNEIP + '%' }"> </div>
-              <!-- <div class="cash pay-bar" style="width: ceo.percentCash + '%'"> </div> -->
-              <div class="equity pay-bar" ng-style="{ width: ceo.percentEquity + '%' }"> </div>
-              <div class="other pay-bar" ng-style="{ width: ceo.percentOther + '%' }"> </div>
-              <ul class="tooltip">
-                <!-- <li> Cash: <b>{{ceo.percentCash}}%</b> -->
-                <li><div class="salary color-box"></div> Salary: <b>{{ceo.percentSalary}}%</b></li>
-                <li ng-if="ceo.percentBonus"><div class="bonus color-box"></div> Bonus: <b>{{ceo.percentBonus}}%</b></li>
-                  <!-- <div class="color-box" ng-style="{ width: 20px }"></div> -->
-                <li ng-if="ceo.percentNEIP"><div class="neip color-box"></div> NEIP Payout: <b>{{ceo.percentNEIP}}%</b></li>
-                <li ng-if="ceo.percentEquity"><div class="equity color-box"></div> Equity: <b>{{ceo.percentEquity}}%</b></li>
-                <li ng-if="ceo.percentOther"><div class="other color-box"></div> Other: <b>{{ceo.percentOther}}%</b></li>
-              </ul>
-            </div>
-          </tr>
-        </table>
-    </div>
+        <!-- <label>Total CEOs matching filter:{{(ceoData|filter:ceoFilter).length}}</label> -->
+        <!-- <div class="button" ng-click="filterBy = 'short'" ng-class={active:filterBy=='short'}>Featured CEOs</div> -->
+        <div class="button" ng-click="filterBy = 'short'; ceoData = ceoDataShort" ng-class="{active:filterBy=='short'}">Top paid CEOs</div>
+        <div class="button" ng-click="filterBy = 'all'; ceoData = ceoDataLong" ng-class="{active:filterBy=='all'}">All ({{counts.all}})</div>
+        <div class="button" ng-click="filterBy = 'men'; ceoData = ceoDataLong" ng-class="{active:filterBy=='men'}">Men ({{counts.men}})</div>
+        <div class="button" ng-click="filterBy = 'women'; ceoData = ceoDataLong" ng-class="{active:filterBy=='women'}">Women ({{counts.women}})</div>
+        <div class="button" ng-click="filterBy = 'under40'; ceoData = ceoDataLong" ng-class="{active:filterBy=='under40'}">Under 40 ({{counts.under40}})</div>
+        <div class="button" ng-click="filterBy = 'over40'; ceoData = ceoDataLong" ng-class="{active:filterBy=='over40'}">40+ ({{counts.over40}})</div>
+
+        <table border=1>
+          <thead class="header">
+            <tr>
+            <th class="rank">#</th>
+            <th class="image"></th>
+            <th
+              class="{{header.className}}"
+              ng-repeat="header in headers"
+              ng-click="sortTable(header)"
+              ng-class="{
+                left: header.short == 'company',
+                down: lastSort == header && sortOrder == -1,
+                up: lastSort == header && sortOrder == 1
+              }">
+                {{header.title}}
+              </th>
+            </tr>
+          </thead>
+            <tr ng-repeat="ceo in ceoData | ceoFilter:filterBy">
+              <td class="rank">{{ceo.rank}}
+              <td class="image">
+                <img ng-class="{ mug: ceo.mug, anon: !ceo.mug }" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img>
+                <!-- <img class="mug" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img> -->
+              <td class=name> {{ceo.name}}
+              <td class=age> {{ceo.age}}
+              <td class=company> {{ceo.company}}
+              <td class="pay outer-bar"> ${{ceo.total | number}} <p>
+              <!-- <td class="outer-bar"> -->
+              <div class="bar-container">
+                <div class="salary pay-bar" ng-style="{ width: ceo.percentSalary + '%' }"> </div>
+                <div class="bonus pay-bar" ng-style="{ width: ceo.percentBonus + '%' }"> </div>
+                <div class="neip pay-bar" ng-style="{ width: ceo.percentNEIP + '%' }"> </div>
+                <!-- <div class="cash pay-bar" style="width: ceo.percentCash + '%'"> </div> -->
+                <div class="equity pay-bar" ng-style="{ width: ceo.percentEquity + '%' }"> </div>
+                <div class="other pay-bar" ng-style="{ width: ceo.percentOther + '%' }"> </div>
+                <ul class="tooltip">
+                  <!-- <li> Cash: <b>{{ceo.percentCash}}%</b> -->
+                  <li><div class="salary color-box"></div> Salary: <b>{{ceo.percentSalary}}%</b></li>
+                  <li ng-if="ceo.percentBonus"><div class="bonus color-box"></div> Bonus: <b>{{ceo.percentBonus}}%</b></li>
+                    <!-- <div class="color-box" ng-style="{ width: 20px }"></div> -->
+                  <li ng-if="ceo.percentNEIP"><div class="neip color-box"></div> NEIP Payout: <b>{{ceo.percentNEIP}}%</b></li>
+                  <li ng-if="ceo.percentEquity"><div class="equity color-box"></div> Equity: <b>{{ceo.percentEquity}}%</b></li>
+                  <li ng-if="ceo.percentOther"><div class="other color-box"></div> Other: <b>{{ceo.percentOther}}%</b></li>
+                </ul>
+              </div>
+            </tr>
+          </table>
+      </div>
+      
+    </responsive-child>
 
 
     <script>

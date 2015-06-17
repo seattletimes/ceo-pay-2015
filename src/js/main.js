@@ -1,8 +1,8 @@
 //Use CommonJS style via browserify to load other modules
-require("./lib/social");
-require("./lib/ads");
+// require("./lib/social");
+// require("./lib/ads");
 require("angular");
-// require("component-responsive-frame/child");
+require("component-responsive-frame/child");
 
 var app = angular.module("ceos", []);
 
