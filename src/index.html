@@ -14,7 +14,7 @@
 
       <!-- <label>Total CEOs matching filter:{{(ceoData|filter:ceoFilter).length}}</label> -->
       <!-- <div class="button" ng-click="filterBy = 'short'" ng-class={active:filterBy=='short'}>Featured CEOs</div> -->
-      <div class="button" ng-click="filterBy = 'short'; ceoData = ceoDataShort" ng-class="{active:filterBy=='short'}">Top 10 CEOs</div>
+      <div class="button" ng-click="filterBy = 'short'; ceoData = ceoDataShort" ng-class="{active:filterBy=='short'}">Top paid CEOs</div>
       <div class="button" ng-click="filterBy = 'all'; ceoData = ceoDataLong" ng-class="{active:filterBy=='all'}">All ({{counts.all}})</div>
       <div class="button" ng-click="filterBy = 'men'; ceoData = ceoDataLong" ng-class="{active:filterBy=='men'}">Men ({{counts.men}})</div>
       <div class="button" ng-click="filterBy = 'women'; ceoData = ceoDataLong" ng-class="{active:filterBy=='women'}">Women ({{counts.women}})</div>
@@ -24,7 +24,7 @@
       <table border=1>
         <thead class="header">
           <tr>
-          <th class="rank"></th>
+          <th class="rank">#</th>
           <th class="image"></th>
           <th
             class="{{header.className}}"
@@ -80,7 +80,7 @@
     <%= t.include("partials/_workHere.html") %>
     <% } %>
 
-    <div class="source"> Source: [Insert here]</div>
+    <div class="source"> Source: <a href="http://www.equilar.com">Equilar</a></div>
     <div class="credit">Emma O'Neill / The Seattle Times</div>
 
   </body>

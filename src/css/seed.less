@@ -10,7 +10,7 @@
 body {
   font-family: @df-sans;
   font-size: 14px;
-  max-width: 620px;
+  max-width: 960px;
 
   @media @tablet {
     font-size: 12px;
@@ -38,6 +38,10 @@ table {
     padding: 8px 8px;
     border: none;
     line-height: 16px;
+  }
+
+  .rank {
+    width: 20px;
   }
 
   .image {
@@ -133,8 +137,8 @@ table {
 @salary: black;
 @bonus: lighten(#34401B, 10%);
 @neip: #A9CE56;
-@equity: #58903F;
 @other: purple;
+@equity: spin(#58903F, 30);
 
 
 .pay-bar {
