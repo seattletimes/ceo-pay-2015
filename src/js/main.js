@@ -25,7 +25,7 @@ ceoData.forEach(function(row) {
 });
 
 ceoData.forEach(function(row) {
-  var lastname = row.name.split(' ').slice(-1).join(' ');
+  var lastname = row.name.replace(/,.*$/, "").split(' ').slice(-1).join(' ');
   var firstname = row.name.split(' ').slice(0,-1).join(' ');
   row.lastname = lastname;
   row.firstname = firstname;
