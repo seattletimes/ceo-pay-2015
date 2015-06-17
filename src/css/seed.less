@@ -129,24 +129,32 @@ table {
   }
 }
 
+// define colors
+@salary: black;
+@bonus: lighten(#34401B, 10%);
+@neip: #A9CE56;
+@equity: #58903F;
+@other: purple;
+
+
 .pay-bar {
   height: 15px;
   float: left;
 
   &.salary {
-    background: black;
+    background: @salary;
   }
   &.bonus {
-    background: #34401B;
+    background: @bonus;
   }
   &.neip {
-    background: #A9CE56;
+    background: @neip;
   }
   &.equity {
-    background: #58903F;
+    background: @equity;
   }
   &.other {
-    background: purple;
+    background: @other;
   }
 
   &:hover {
@@ -181,7 +189,7 @@ table {
     margin: 10;
 
     &.color_bar {
-      background: #A9CE56;
+      background: @neip;
     }
 
     .color-box {
@@ -191,19 +199,19 @@ table {
       // height: 4px;
       display: inline-block;
       &.salary {
-        background: black;
+        background: @salary;
       }
       &.bonus {
-        background: #34401B;
+        background: @bonus;
       }
       &.neip {
-        background: #A9CE56;
+        background: @neip;
       }
       &.equity {
-        background: #58903F;
+        background: @equity;
       }
       &.other {
-        background: purple;
+        background: @other;
       }
     }
 

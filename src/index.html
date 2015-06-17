@@ -24,6 +24,7 @@
       <table border=1>
         <thead class="header">
           <tr>
+          <th class="rank"></th>
           <th class="image"></th>
           <th
             class="{{header.className}}"
@@ -39,6 +40,7 @@
           </tr>
         </thead>
           <tr ng-repeat="ceo in ceoData | ceoFilter:filterBy">
+            <td class="rank">{{ceo.rank}}
             <td class="image">
               <img ng-class="{ mug: ceo.mug, anon: !ceo.mug }" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img>
               <!-- <img class="mug" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img> -->

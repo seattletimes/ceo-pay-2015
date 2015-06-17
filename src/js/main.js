@@ -55,7 +55,7 @@ app.controller("CEOPayController", ["$scope", "$filter", function($scope, $filte
     { title: "Total Salary", short: "total", className: "pay" }
   ];
 
-  $scope.lastSort = $scope.headers[3];
+  $scope.lastSort = $scope.headers[4];
   $scope.sortOrder = -1;
 
   $scope.switchData = function(useLong) {
