@@ -208,7 +208,7 @@ table {
     position: absolute;
     background: white;
     border: 1px solid @df-light-gray;
-    line-height: 120%;
+    line-height: 130%;
     box-shadow: 4px 4px 4px rgba(0, 0, 0, .2);
     padding: 5px;
     top: calc(~"100% + 5px");
@@ -222,10 +222,19 @@ table {
       background: @neip;
     }
 
+    .text-pop-up {
+      display: inline-block;
+      text-align: left;
+      margin-left: 10px;
+      vertical-align: top;
+    }
+
+
     .color-box {
       list-style: none;
       padding: 8px;
       width: 10px;
+      vertical-align: center;
       // height: 4px;
       display: inline-block;
       &.salary {
