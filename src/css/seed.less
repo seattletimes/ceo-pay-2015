@@ -21,6 +21,22 @@ body {
   @media @mobile {
     font-size: 11px;
   }
+
+  .title {
+    // font-family: @hed;
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+    padding-bottom: 5px;
+  }
+
+  .chatter {
+    font-size: 18px;
+    // font-family: @hed;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+
 }
 
 table {
@@ -84,30 +100,32 @@ table {
   }
 }
 
-.button {
-  display: inline-block;
-  margin: 3px 3px;
-  border: 1px @df-light-gray;
-  background-color: @df-light-gray;
-  padding: 5px 10px;
+.button-container {
+  text-align: center;
 
-  &:hover {
-    cursor: pointer;
-    background-color: @df-dark-gray;
-    color: white;
+  .button {
+    display: inline-block;
+    margin: 3px 3px;
+    border: 1px @df-light-gray;
+    background-color: @df-light-gray;
+    padding: 5px 10px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: @df-dark-gray;
+      color: white;
+    }
+
+    &.active {
+      background-color: @df-dark-gray;
+      color: white;
+      font-weight: bold;
+    }
+
+    @media @mobile and (orientation: landscape){
+      padding: 5px 5px;
+    }
   }
-
-  &.active {
-    background-color: @df-dark-gray;
-    color: white;
-    font-weight: bold;
-  }
-
-  @media @mobile and (orientation: landscape){
-    padding: 5px 5px;
-  }
-
-
 }
 
 &.up::after, &.down::after {
@@ -197,7 +215,6 @@ table {
     right: 0;
     display: none;
     z-index: 999;
-    font-size: 20;
     list-style-type: none;
     margin: 10;
 
