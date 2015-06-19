@@ -114,6 +114,21 @@ app.controller("CEOPayController", ["$scope", "$filter", function($scope, $filte
     }
   });
 
+  app.directive("activeTouch", function() {
+    return {
+      restrict: "A",
+      link: function(scope, element, attrs) {
+        element.on("touchstart", function() {
+          var actives = document.querySelectorAll(".ceo-table .active");
+          for (var i = 0; i < actives.length; i++) {
+            actives[i].classList.remove("active");
+          }
+          element.addClass("active");
+        });
+      }
+    }
+  })
+
   // app.directive("upgradeSrc", function() {
   //   return {
   //     restrict: "A",

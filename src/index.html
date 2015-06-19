@@ -36,7 +36,7 @@
           <div class="button" ng-click="filterBy = 'over40'; ceoData = ceoDataLong" ng-class="{active:filterBy=='over40'}">40+ ({{counts.over40}})</div>
         </div>
 
-        <table border=1>
+        <table border=1 class="ceo-table">
           <thead class="header">
             <tr>
             <th class="rank">#</th>
@@ -55,15 +55,16 @@
               </th>
             </tr>
           </thead>
+          <tbody>
             <tr ng-repeat="ceo in ceoData | ceoFilter:filterBy">
               <td class="rank">{{ceo.rank}}
               <td class="image">
                 <img ng-class="{ mug: ceo.mug, anon: !ceo.mug }" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img>
                 <!-- <img class="mug" src="./assets/ceo_mugs_2015/{{ceo.mug || 'malephoto'}}.jpg"></img> -->
-              <td class=name> {{ceo.name}}
-              <td class=age> {{ceo.age}}
-              <td class=company> {{ceo.company}}
-              <td class="pay outer-bar"> ${{ceo.total | number}} <p>
+              <td class=name active-touch> {{ceo.name}}
+              <td class=age active-touch> {{ceo.age}}
+              <td class=company active-touch> {{ceo.company}}
+              <td class="pay outer-bar" active-touch> ${{ceo.total | number}}
               <!-- <td class="outer-bar"> -->
               <div class="bar-container">
                 <div class="salary pay-bar" ng-style="{ width: ceo.percentSalary + '%' }"> </div>
@@ -83,7 +84,8 @@
                 </ul>
               </div>
             </tr>
-          </table>
+          </tbody>
+        </table>
       </div>
 
     </responsive-child>
