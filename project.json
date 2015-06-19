@@ -5,8 +5,8 @@
       "path": "unlikely-missile"
     },
     "live": {
-      "bucket": "",
-      "path": ""
+      "bucket": "projects.seattletimes.com",
+      "path": "2015/business/ceo-pay"
     }
   },
   "title": "",
@@ -14,6 +14,6 @@
   "url": "",
   "slug": "",
   "tags": [],
-  "production": false,
+  "production": true,
   "embedded": true
 }
