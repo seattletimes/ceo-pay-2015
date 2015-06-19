@@ -56,6 +56,7 @@ table {
     padding: 8px 8px;
     border: none;
     line-height: 16px;
+    text-align: left;
   }
 
   .rank {
@@ -97,6 +98,11 @@ table {
   border-bottom: 4px solid @df-dark-gray;
   &:hover {
     cursor: pointer;
+  }
+  .rank {
+    &:hover {
+      cursor: default;
+    }
   }
 }
 
