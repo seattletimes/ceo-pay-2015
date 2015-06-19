@@ -128,17 +128,3 @@ app.controller("CEOPayController", ["$scope", "$filter", function($scope, $filte
       }
     }
   })
-
-  // app.directive("upgradeSrc", function() {
-  //   return {
-  //     restrict: "A",
-  //     link: function(scope, element, attrs) {
-  //       var src = attrs.upgradeSrc;
-  //       var img = new Image();
-  //       img.src = src;
-  //       img.onload = function() {
-  //         element.attr("src", src);
-  //       };
-  //     }
-  //   }
-  // })
