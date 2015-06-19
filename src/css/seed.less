@@ -19,7 +19,7 @@ body {
   }
 
   @media @mobile {
-    font-size: 11px;
+    font-size: 15px;
   }
 
   .title {
@@ -41,7 +41,7 @@ body {
     text-align: center;
 
     @media @mobile {
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 
@@ -67,8 +67,30 @@ table {
     text-align: left;
   }
 
+  th.pay {
+    .desktop {
+      display: inline;
+
+      @media @mobile {
+        display: none;
+      }
+    }
+
+    .mobile {
+      display: none;
+
+      @media @mobile {
+        display: inline;
+      }
+    }
+
+  }
+
   .rank {
     width: 43px;
+    @media @mobile and (orientation: portrait) {
+      display: none;
+    }
   }
 
   .image {

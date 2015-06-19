@@ -50,7 +50,8 @@
                 down: lastSort == header && sortOrder == -1,
                 up: lastSort == header && sortOrder == 1
               }">
-                {{header.title}}
+                <span class="desktop">{{header.title}}</span>
+                <span class="mobile">{{header.alternate}}</span>
               </th>
             </tr>
           </thead>

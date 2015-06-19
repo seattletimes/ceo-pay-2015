@@ -52,7 +52,7 @@ app.controller("CEOPayController", ["$scope", "$filter", function($scope, $filte
     { title: "Name", short: "lastname", className: "name" },
     { title: "Age", short: "age", className: "age" },
     { title: "Company", short: "company", className: "company" },
-    { title: "Total Compensation", short: "total", className: "pay" }
+    { title: "Total Compensation", alternate: "Total Pay", short: "total", className: "pay" }
   ];
 
   $scope.lastSort = $scope.headers[4];
